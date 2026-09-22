@@ -1,0 +1,23 @@
+yogesh@DESKTOP-O3KHDJ8:~/evaluation-bench/apps/flexledger$ git fetch origin
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 890 bytes | 445.00 KiB/s, done.
+From https://github.com/Yogesh637/FlexLedger
+ * [new branch]      main       -> origin/main
+yogesh@DESKTOP-O3KHDJ8:~/evaluation-bench/apps/flexledger$ git merge origin/main --allow-unrelated-histories
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+yogesh@DESKTOP-O3KHDJ8:~/evaluation-bench/apps/flexledger$yogesh@DESKTOP-O3KHDJ8:~/evaluation-bench/apps/flexledger$ git fetch origin
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 890 bytes | 445.00 KiB/s, done.
+From https://github.com/Yogesh637/FlexLedger
+ * [new branch]      main       -> origin/main
+yogesh@DESKTOP-O3KHDJ8:~/evaluation-bench/apps/flexledger$ git merge origin/main --allow-unrelated-histories
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+yogesh@DESKTOP-O3KHDJ8:~/evaluation-bench/apps/flexledger$
