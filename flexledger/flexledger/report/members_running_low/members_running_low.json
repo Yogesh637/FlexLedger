@@ -1,0 +1,39 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-09-23 18:05:17.186768",
+ "disable_prepared_report_automation": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-09-23 18:20:56.112386",
+ "modified_by": "Administrator",
+ "module": "flexledger",
+ "name": "Members Running Low",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "Select pp.name,pp.member,pp.credits_remaining,pp.expiry_date,pp.status \nfrom `tabPackage Purchase` pp\nwhere pp.status = \"Active\" and pp.credits_remaining <=\n(\n    select s.value  \n    from `tabSingles` s\n    where s.doctype = \"Studio Settings\"\n    and s.field = \"low_balance_alert_threshold\"\n)",
+ "ref_doctype": "Package Purchase",
+ "report_name": "Members Running Low",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "FIT Studio Manager"
+  },
+  {
+   "role": "FIT Trainer"
+  },
+  {
+   "role": "FIT Front Desk"
+  }
+ ],
+ "timeout": 0
+}

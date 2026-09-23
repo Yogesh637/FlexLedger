@@ -50,3 +50,25 @@ def transfer_package(package_name, new_member):
             title = "Error while transfer package to new member",
             message = frappe.get_traceback()
         )
+
+@frappe.whitelist()
+def swap_trainer(session, reason):
+    doc = frappe.get_doc("Class Session", session)
+
+    trainer = frappe.db.get_value(
+        "Trainer",
+        {"status": "Active"},
+        "name"
+    )
+
+    if not trainer:
+        frappe.throw("No active trainer available.")
+
+    doc.trainer = trainer
+    doc.save()
+
+    return {
+        "success": True,
+        "trainer": trainer,
+        "reason": reason
+    }

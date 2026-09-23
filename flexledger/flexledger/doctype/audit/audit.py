@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class PackagePurchase(Document):
+class Audit(Document):
 	pass

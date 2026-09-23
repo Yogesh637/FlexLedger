@@ -5,6 +5,33 @@ app_description = "flexledger"
 app_email = "yogeshperumal637@gmail.com"
 app_license = "mit"
 
+# doc_events = {
+#     "*": {
+#         "on_update": "flexledger.audit.log_change",
+#         "on_submit": "flexledger.audit.log_change",
+#         "on_cancel": "flexledger.audit.log_change",
+#     }
+# }
+
+fixtures =[
+    {
+        "dt":"Custom DocPerm",
+        "filters":[
+            ["role","in",[
+                "FIT Front Desk",
+                "FIT Trainer ",
+                "FIT Studio Manager"
+            ]]
+        ]
+    }
+]
+
+after_install = "flexledger.install.after_install"
+
+permission_query_conditions = {
+    "Class Session": "flexledger.permissions.class_session_query"
+}
+
 # Apps
 # ------------------
 
