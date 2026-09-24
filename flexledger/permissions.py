@@ -14,6 +14,7 @@ def class_session_query(user):
         "name"
     )
 
+
     if not trainer:
         return "1 = 0"
 

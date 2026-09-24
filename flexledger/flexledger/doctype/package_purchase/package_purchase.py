@@ -1,9 +1,15 @@
 # Copyright (c) 2026, yogesh and contributors
 # For license information, please see license.txt
 
-# import frappe
 from frappe.model.document import Document
 
 
 class PackagePurchase(Document):
-	pass
+
+    def validate(self):
+        self.calc_credits()
+
+    def calc_credits(self):
+        self.credits_remaining = (
+            self.total_credits - self.credits_used
+        )

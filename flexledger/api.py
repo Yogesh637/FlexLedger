@@ -50,7 +50,46 @@ def transfer_package(package_name, new_member):
             title = "Error while transfer package to new member",
             message = frappe.get_traceback()
         )
+        
+@frappe.whitelist()
+def unsafe_get_members():
 
+    return frappe.db.get_all("Member", fields=["*"])
+
+
+@frappe.whitelist()
+def safe_get_members():
+
+    fields = ["name", "member_name", "join_date", "status", "user", "phone", "email"]
+
+    if "FIT Studio Manager" not in frappe.get_roles(frappe.session.user):
+        fields.remove("phone")
+        fields.remove("email")
+    return frappe.get_list("Member", fields=fields)
+
+def send_low_balance_email(member,package_purchase,credits_remaining,threshold):
+    user = frappe.get_doc(
+        "Member",
+        member,
+    )
+    if not user.email:
+        return
+    frappe.sendmail(
+        recipients=[user.email],
+        subject = f"Low Credit Balance",
+        message = f"""
+                <h2>Low Credit Balance!!!<h2>
+                
+                <p> Dear {user.member_name} , Your Credits remaining for the package {package_purchase} is
+                is lower than the required credits of the Gym , So kindly Purchase a new Package !!!
+                </p>
+                <p>Thank You</p>
+                
+                <p>Credits Remaining : {credits_remaining}</p>
+                <p>Credits Required : {threshold}</p>
+        """
+    )
+    
 @frappe.whitelist()
 def swap_trainer(session, reason):
     doc = frappe.get_doc("Class Session", session)
@@ -72,3 +111,6 @@ def swap_trainer(session, reason):
         "trainer": trainer,
         "reason": reason
     }
+    
+# @frappe.whitelist()
+# def get_member_balance(member_id):
