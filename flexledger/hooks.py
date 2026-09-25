@@ -32,6 +32,12 @@ permission_query_conditions = {
     "Class Session": "flexledger.permissions.class_session_query"
 }
 
+scheduler_events = {
+    "daily": [
+        "flexledger.api.check_expiring_packages"
+    ]
+}
+
 # Apps
 # ------------------
 

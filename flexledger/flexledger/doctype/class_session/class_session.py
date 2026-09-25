@@ -127,6 +127,11 @@ class ClassSession(Document):
                     credits_remaining=new_credits_remaining,
                     threshold = threshold
                 )
+                
+            frappe.enqueue(
+                "flexledger.webhook.send_webhook",
+                session_name = self.name
+            )
 
     def on_cancel(self):
         self.status = "Cancelled"
@@ -176,6 +181,3 @@ class ClassSession(Document):
         if self.status not in ("Cancelled","Draft"):
             frappe.throw("Upcoming non-cancelled Sessions cannot be deleted!!!") 
             
-    # def on_update(self):
-    #     self.save()
-    

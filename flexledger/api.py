@@ -1,5 +1,6 @@
 import frappe
 from frappe.query_builder import DocType
+from frappe.utils import add_days, getdate, today
 
 @frappe.whitelist()
 def get_low_balance_members():
@@ -111,6 +112,39 @@ def swap_trainer(session, reason):
         "trainer": trainer,
         "reason": reason
     }
+    
+def check_expiring_packages():
+
+    recent = frappe.db.get_value(
+        "Audit Log",
+        {"action": "expiry_check", "date": today()},
+        "name",
+    )
+
+    if recent:
+        return
+    packages = frappe.get_all(
+        "Package Purchase",
+        filters={
+            "status": "Active",
+            "expiry_date": ["between", [today(), add_days(today(), 7)]],
+        },
+        fields=["name", "member", "expiry_date"],
+    )
+    
+    for package in packages:
+        frappe.db.set_value("Package Purchase", package.name, "status", "Active", update_modified=False)
+    frappe.get_doc({
+        "doctype": "Audit Log",
+        "doctype_name": "Package Purchase",
+        "document_name": "expiry_check",
+        "action": "expiry_check",
+        "user": "Administrator",
+        "timestamp": frappe.utils.now_datetime(),
+        "date": today(),
+    }).insert(ignore_permissions=True)
+    
+    
     
 # @frappe.whitelist()
 # def get_member_balance(member_id):
