@@ -32,7 +32,7 @@ def transfer_package(package_name, new_member):
     try:
         result = frappe.db.sql(
             f"""
-            UPDATE  `tabPackage Purchase`
+            UPDATE `tabPackage Purchase`
             SET member = %s
             WHERE name = %s AND credits_used = 0
             """
@@ -54,7 +54,6 @@ def transfer_package(package_name, new_member):
         
 @frappe.whitelist()
 def unsafe_get_members():
-
     return frappe.db.get_all("Member", fields=["*"])
 
 

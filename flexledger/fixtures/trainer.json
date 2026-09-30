@@ -1,0 +1,47 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Trainer",
+  "email": null,
+  "employee_id": null,
+  "joining_date": null,
+  "modified": "2026-09-30 15:08:42.539577",
+  "name": "TRN-0004",
+  "phone": "+91-9453499090",
+  "photo": null,
+  "specialization": "1:1 Personal Training",
+  "status": "Active",
+  "trainer_name": "Vimal",
+  "user": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Trainer",
+  "email": null,
+  "employee_id": null,
+  "joining_date": null,
+  "modified": "2026-09-23 15:45:24.742883",
+  "name": "TRN-0001",
+  "phone": null,
+  "photo": null,
+  "specialization": "Test",
+  "status": "Active",
+  "trainer_name": "Test",
+  "user": null
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Trainer",
+  "email": null,
+  "employee_id": null,
+  "joining_date": null,
+  "modified": "2026-09-23 17:33:04.194869",
+  "name": "TRN-0003",
+  "phone": null,
+  "photo": null,
+  "specialization": "Test",
+  "status": "Active",
+  "trainer_name": "mouloish",
+  "user": null
+ }
+]

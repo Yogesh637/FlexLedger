@@ -13,16 +13,12 @@ app_license = "mit"
 #     }
 # }
 
-fixtures =[
+fixtures = [
     {
-        "dt":"Custom DocPerm",
-        "filters":[
-            ["role","in",[
-                "FIT Front Desk",
-                "FIT Trainer ",
-                "FIT Studio Manager"
-            ]]
-        ]
+        "dt":"Trainer",
+        "filters":{
+            "status":"Active"
+            }
     }
 ]
 

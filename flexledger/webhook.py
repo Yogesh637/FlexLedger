@@ -5,7 +5,6 @@ frappe.utils.logger.set_log_level("INFO")
 logger = frappe.logger("flexledger")
 
 def send_webhook(session_name):
-    import requests
     settings = frappe.get_single("Studio Settings")
     if not settings.webhook_url:
         return
